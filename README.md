@@ -20,39 +20,59 @@ Detection is driven primarily by **author mismatch**: fabricated citations often
 
 ## Files
 
+**Notebook**
+
 | File | Description |
 |------|-------------|
-| `DetectorAPI_Report.ipynb` | Main notebook: runs all benchmarks through the AtomGPT API and produces the figures |
-| `DetectorTool_Report_main.ipynb` | Analysis of results exported from the AtomGPT web UI |
+| `DetectorAPI_Report_main.ipynb` | Runs all three benchmarks through the AtomGPT API and produces the figures |
+
+**NeurIPS 2025 benchmark**
+
+| File | Description |
+|------|-------------|
 | `hallucination_report_2.csv` | Raw per-citation output exported from the AtomGPT UI |
 | `ui_all_cols_results.csv` | Cleaned NeurIPS results table used in the analysis |
-| `atomgpt_neurips_100.csv` | NeurIPS results from the API run |
-| `citeaudit_sample_300.csv` | Balanced 300-citation CiteAudit sample (150 genuine, 150 fabricated) |
-| `citeaudit_all300_combined.csv` | Merged CiteAudit results with per-field scores and status |
-| `materials_citations.json` | Materials-science pilot citations (genuine and fabricated) |
-| `materials_test_results.csv` | Materials pilot results by reference type |
-| `ui_status_distribution.png` | NeurIPS status distribution (66/28/6) |
+| `ui_status_distribution.png` | Status distribution (66/28/6) |
+| `ui_component_panels.pdf` | Three-panel per-field score distribution (paper figure) |
 | `ui_component_by_status.png` | Mean component score by status |
 | `ui_title_match_dist.png` | Title score distribution |
 | `ui_author_match_dist.png` | Author score distribution |
 | `ui_journal_match_dist.png` | Journal score distribution |
+
+**CiteAudit benchmark**
+
+| File | Description |
+|------|-------------|
+| `citeaudit_all300_combined.csv` | Merged results with per-field scores and status |
 | `atomgpt_citeaudit_300.png` | CiteAudit status distribution |
+
+**Materials-science pilot**
+
+| File | Description |
+|------|-------------|
+| `materials_citations.json` | Genuine and fabricated materials citations by reference type |
+| `materials_test_results.csv` | Materials pilot results by reference type |
 | `materials_by_category.png` | Materials status by reference type |
+
+**Methods figures**
+
+| File | Description |
+|------|-------------|
+| `atomgpt_flowchart.png` | Evaluation pipeline diagram |
+| `tool_snapshot_2.png` | Screenshot of the AtomGPT web interface |
 
 ## Run
 
 ```bash
 pip install requests pandas numpy matplotlib
-jupyter notebook DetectorAPI_Report.ipynb
+jupyter notebook DetectorAPI_Report_main.ipynb
 ```
 
-The API notebook needs an AtomGPT key. Set it as an environment variable before launching (it is never hardcoded):
+The notebook needs an AtomGPT key. Set it as an environment variable before launching (it is never hardcoded):
 
 ```bash
 export AGAPI_KEY="your-key-here"
 ```
-
-The UI-analysis notebook (`DetectorTool_Report_main.ipynb`) needs no key; place `hallucination_report_2.csv` in the same directory and run all cells.
 
 ## Data sources
 
